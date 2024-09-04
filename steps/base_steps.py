@@ -11,10 +11,7 @@ URL: str = 'https://en.wikipedia.org/wiki/Programming_languages_used_in_most_pop
 
 def parce_table_to_soup(page: Page):
     page.goto(URL)
-    page.get_by_role('link', name='Website')
     expect(page.get_by_text('Popularity')).to_be_visible()
-    expect(page.get_by_text('Popularity')).to_be_visible()
-
     page_text = requests.get(URL).text
     soup = BeautifulSoup(page_text, 'lxml')
     return soup
